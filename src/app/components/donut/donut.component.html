@@ -1,0 +1,10 @@
+<h1>DVDonuts!</h1>
+<ul>
+<h3>Menu:</h3>
+    @for(d of donutResult.results; track $index){
+        <li>
+            <a routerLink="{{d.photo}}">${{d.price}} {{d.name}}</a> 
+            <button (click)="addToCart(donutResult)">Add to cart</button>
+        </li>
+    }
+</ul>
