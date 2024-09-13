@@ -1,1 +1,8 @@
-<p>cart works!</p>
+<h1>Cart</h1>
+<ul>
+    @for (i of getCart(); track $index) {
+        <li>$1. {{i.name}}</li>
+    }
+</ul>
+<h2>Total price: ${{getTotal()}}</h2>
+<button (click)="buy()">Purchase</button>

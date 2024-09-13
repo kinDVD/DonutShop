@@ -1,16 +1,19 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { DetailedDonut } from '../models/donut';
-import { Observable } from 'rxjs';
+import { Result } from '../models/donut';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
 
-  constructor(private http: HttpClient) { }
+  cart:Result [] = [];
 
-    getDonut():Observable <DetailedDonut>{
-      return this.http.get<DetailedDonut>("https://grandcircusco.github.io/demo-apis/donuts.json")
-    }
+  addDonut(d: Result){
+    this.cart.push(d);
+  }
+  resetCart(){
+      this.cart = [];
+   }
+
 }

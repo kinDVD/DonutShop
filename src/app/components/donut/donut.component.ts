@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { DonutModel } from '../../models/donut';
+import { DonutModel, Result } from '../../models/donut';
 import { DonutService } from '../../services/donut.service';
 import {RouterLink } from '@angular/router';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-donut',
@@ -12,16 +13,14 @@ import {RouterLink } from '@angular/router';
 })
 export class DonutComponent {
   donutResult:DonutModel = {} as DonutModel;
-  constructor(private DonutService: DonutService){}
+  constructor(/*Dependency Injection=>*/private DonutService: DonutService, private CartService: CartService){}
   
   ngOnInit(){
- 
     this.DonutService.getDonut().subscribe((response: DonutModel) => {
-      console.log(response);
       this.donutResult=response;
     })
   }
-  addToCart(d: DonutModel){
-    this.DonutService.addDonut(d);
+  addToCart(d: Result){
+    this.CartService.addDonut(d);
   }
 }

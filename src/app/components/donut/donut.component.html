@@ -3,8 +3,8 @@
 <h3>Menu:</h3>
     @for(d of donutResult.results; track $index){
         <li>
-            <a routerLink="{{d.photo}}">${{d.price}} {{d.name}}</a> 
-            <button (click)="addToCart(donutResult)">Add to cart</button>
+            <a routerLink="{{d.id}}">$1 {{d.name}}</a> 
+            <button (click)="addToCart(d)">Add to cart</button>
         </li>
     }
 </ul>
