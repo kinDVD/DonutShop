@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { DonutService } from '../../services/donut.service';
 import { ActivatedRoute, RouterLink } from '@angular/router';
-import { DetailedDonut, Result} from '../../models/donut';
+import { DetailedDonut, DonutModel, Result} from '../../models/donut';
 import { CartService } from '../../services/cart.service';
 
 @Component({
@@ -14,10 +14,11 @@ import { CartService } from '../../services/cart.service';
 export class DetaileddonutComponent {
 
   donutResult: DetailedDonut = {} as DetailedDonut;
+  results: Result = {} as Result;
 
   constructor(private donutService: DonutService, private activatedRoute: ActivatedRoute, private CartService: CartService){}
 
-  ngOnIt(){
+  ngOnInit(){
     this.activatedRoute.paramMap.subscribe((params)=>{
       let id:number = Number(params.get("id"));
 
@@ -25,16 +26,20 @@ export class DetaileddonutComponent {
         this.donutResult = response;
       });
     })
-  }
-  addToCart(donutResult: DetailedDonut): void{
-  
-    if(this.donutService.donut.id = donutResult.id){
-      let plainDonut: Result = this.donutService.donut;
-      this.CartService.addDonut(plainDonut);
-    }
-  
-  }
+    
+    this.donutService.getDonut().subscribe((response: DonutModel) => {
+      response.results.forEach(donut => {
+        if(donut.name === this.donutResult.name){
+          this.results = donut;
+        }
+      })
+    });
 
-
+  }
+  addToCart(results: Result){
+    this.CartService.addDonut(results);
+  }
 
 }
+
+

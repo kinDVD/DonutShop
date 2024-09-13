@@ -1,17 +1,16 @@
-
-<div class="Container">
-<h1>DVDonut Details Device</h1>
-<div class="card" style="width: 500px">
-    <img id="donutImage" src="{{ donutResult.photo }}" height="500px"  class="card-img-top" alt="..."  />
-    <div class="card body">
-    <a href="{{donutResult.photo_attribution}}" small class="card-link text-muted">Source</a>
-<h3 class="card-title">{{donutResult.name}}</h3>
-    @for(d of donutResult.extras; track $index)
-    {
-        {{d}}
-    }
-<p class="card-text"> {{donutResult.calories}}</p>
-<button class="card-footer btn btn-danger" (click)="addToCart(donutResult)">Add to cart</button>
-</div>
-</div>
-</div>
+<div id="overlay" class="container" width="18rem">
+    <div class="card" >
+        <img id="donutImage" src="{{ donutResult.photo }}" height="500px"  class="card-img-top" alt="..."  />
+                    <h1 class="card-title">DVDonut Details Device</h1>
+            <div class="card body">
+                <a href="{{donutResult.photo_attribution}}" small class="card-link text-muted">Source</a>
+                <h3 class="card-title">{{donutResult.name}}</h3>
+                    @for(d of donutResult.extras; track $index)
+                    {
+                        {{d}}
+                    }
+                <p class="card-text"> {{donutResult.calories}}</p>
+                <button class="card-footer btn btn-danger" (click)="addToCart(results)">Add to cart</button>
+            </div>
+        </div>
+    </div>

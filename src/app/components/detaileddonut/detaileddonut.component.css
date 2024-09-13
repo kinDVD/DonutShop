@@ -25,3 +25,17 @@ body{
 #donutImage{
     z-index: 100;
 }
+
+#masonry { 
+    column-count: 4;
+    column-gap: 1em;
+    z-index: -100;
+  }
+  
+  #item { 
+    background-color: #eee;
+    display: inline-block;
+    margin: 0 0 1em;
+    width: 100%;
+    z-index: -99;
+  }
